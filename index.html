@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocean Horizon 系列 - 迄今最强标准版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            border-bottom: 1px solid #e5e5e7;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0071e3;
+        }
+
+        /* 通用图片展示区样式 */
+        .product-section {
+            text-align: center;
+            padding: 4rem 5%;
+            border-bottom: 1px solid #e5e5e7;
+        }
+
+        /* 调小图片尺寸 */
+        .product-section img {
+            max-width: 70%;
+            height: auto;
+            margin-bottom: 2rem;
+            max-height: 400px;
+        }
+
+        .product-section h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .product-section h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .product-section h3 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin: 2rem 0 1rem;
+        }
+
+        .product-section p {
+            font-size: 1.2rem;
+            color: #1d1d1f;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 参数表格样式 */
+        .specs-table {
+            max-width: 800px;
+            margin: 2rem auto;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .specs-table tr {
+            border-bottom: 1px solid #e5e5e7;
+        }
+
+        .specs-table td {
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
+        }
+
+        .specs-table td:first-child {
+            font-weight: 500;
+            color: #6e6e73;
+            width: 35%;
+        }
+
+        /* 按钮样式 */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #0071e3;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 980px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: #0077ed;
+        }
+
+        .btn-secondary {
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e8e8ed;
+        }
+
+        /* 底部 OceanCard＋ 与 Ocean支持 */
+        .bottom-section {
+            padding: 5rem 5%;
+            background-color: #fafafa;
+            text-align: center;
+            border-bottom: 1px solid #e5e5e7;
+        }
+
+        .bottom-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6rem;
+        }
+
+        .bottom-item {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .bottom-item h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .bottom-item p {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        /* CounterAI 准备就绪 样式（蓝紫渐变背景） */
+        .counterai-section {
+            padding: 4rem 5%;
+            text-align: center;
+            /* 蓝紫渐变背景 */
+            background: linear-gradient(135deg, #165DFF 0%, #722ED1 100%);
+            border-bottom: 1px solid #e5e5e7;
+        }
+
+        .counterai-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .counterai-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffffff; /* 文字改为白色，适配深色背景 */
+        }
+
+        .counterai-section p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85); /* 半透明白色，提升可读性 */
+        }
+
+        /* 页脚 */
+        .footer {
+            background-color: #f5f5f7;
+            padding: 2rem 5%;
+            text-align: center;
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .product-section h1 {
+                font-size: 2rem;
+            }
+
+            .product-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .product-section h3 {
+                font-size: 1.5rem;
+            }
+            
+            .product-section img {
+                max-width: 90%;
+                max-height: 250px;
+            }
+
+            .specs-table {
+                font-size: 0.9rem;
+            }
+
+            .bottom-wrap {
+                gap: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">Ocean Horizon</div>
+        <div class="nav-links">
+            <a href="#home">首页</a>
+            <a href="#details">详情</a>
+        </div>
+    </nav>
+
+    <!-- 首页区域 -->
+    <section id="home" class="product-section">
+        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/904b12e712a542ce8144387574a1a28f.png~tplv-a9rns2rl98-image.png?lk3s=8e244e95&rcl=20260214124951C72DBAC74A171F3693F6&rrcfp=dafada99&x-expires=2087268591&x-signature=EEywZq49PTxW4Nx%2FXd9%2BjrxbDgM%3D" alt="Ocean Horizon 新品展示">
+        <h1>迄今，最强的基础款</h1>
+        <a href="#details" class="btn btn-secondary">查看详情</a>
+    </section>
+
+    <!-- 详情页区域 -->
+    <section id="details" class="product-section">
+        <h2>影像系统</h2>
+        <p>像素1亿，自研芯片O1，200x光学变焦，激光雷达</p>
+
+        <h3>核心参数配置</h3>
+        <table class="specs-table">
+            <tr>
+                <td>处理器</td>
+                <td>RED Xs 旗舰芯片，7nm工艺</td>
+            </tr>
+            <tr>
+                <td>屏幕</td>
+                <td>6.78英寸 2K AMOLED，240Hz LTPO自适应刷新率</td>
+            </tr>
+            <tr>
+                <td>后置主摄</td>
+                <td>1亿像素主摄，f/1.85光圈，OIS光学防抖</td>
+            </tr>
+            <tr>
+                <td>影像芯片</td>
+                <td>自研O1影像NPU，实时计算摄影</td>
+            </tr>
+            <tr>
+                <td>变焦能力</td>
+                <td>200x混合光学变焦，激光雷达辅助对焦</td>
+            </tr>
+            <tr>
+                <td>电池与快充</td>
+                <td>19009mAh，240W有线快充，100W无线快充</td>
+            </tr>
+            <tr>
+                <td>操作系统</td>
+                <td>AuraUI27，支持CounterAI深度交互</td>
+            </tr>
+            <tr>
+                <td>机身材质</td>
+                <td>陶瓷/玄武玻璃，IP68防水防尘</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- 底部：OceanCard＋ 与 Ocean支持 -->
+    <section class="bottom-section">
+        <div class="bottom-wrap">
+            <div class="bottom-item">
+                <h2>OceanCard＋</h2>
+                <p>专属会员服务，尊享优先购买、专属客服、独家主题、延长保修等多项权益，全方位提升你的使用体验。</p>
+            </div>
+            <div class="bottom-item">
+                <h2>Ocean 支持</h2>
+                <p>7×24小时在线客服、官方维修点查询、系统更新支持、数据迁移与安全保障，让你使用全程无忧。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CounterAI 准备就绪（蓝紫渐变背景） -->
+    <section class="counterai-section">
+        <div class="counterai-content">
+            <h2>CounterAI 准备就绪</h2>
+            <p>深度交互，智能随行，为你带来前所未有的智能体验。</p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>&copy; 2026 Ocean Inc. 保留所有权利。</p>
+    </footer>
+</body>
+</html>
